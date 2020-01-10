@@ -29,10 +29,10 @@ Route::get('/', 'HomeController@index')->name('home')->middleware('verified');
 Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
 Route::get('/verify/{token}', 'HomeController@verify')->name('verify');
 
-Route::group(['middleware' => ['auth']], function() {
+// Route::group(['middleware' => ['auth']], function() {
 
 
-    Route::resource('roles','RoleController');
-    Route::resource('users','UserController');
-    Route::resource('courses','CourseController');
-});
+//     Route::resource('roles','RoleController');
+//     Route::resource('users','UserController');
+//     Route::resource('courses','CourseController');
+// });

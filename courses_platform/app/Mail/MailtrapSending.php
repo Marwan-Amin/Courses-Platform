@@ -31,6 +31,11 @@ class MailtrapSending extends Mailable
         //         'name' => 'New Mailtrap User',
         //         'link' => 'https://mailtrap.io/inboxes'
         //     ]);
-    return $this->markdown('mails.mail')->with('user',$this->user);
+   $user = $this->user;
+        if($user->roles == 'student'){
+        return $this->markdown('mails.api')->with('user',$user);
+
+    }
+        return $this->markdown('mails.mail')->with('user',$this->user);
     }
 }

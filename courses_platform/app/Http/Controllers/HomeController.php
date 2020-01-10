@@ -34,7 +34,6 @@ class HomeController extends Controller
        $user = User::where('verify_token',$token)->first();
         if($user){
             if($user->verify == 0){
-                dd($token);
 
                 $user->verify = 1;
                 $user->save();
