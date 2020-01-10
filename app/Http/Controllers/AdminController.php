@@ -15,7 +15,7 @@ class AdminController extends Controller
             ->with('i', ($request->input('page', 1) - 1) * 5);
     }
         /**
-     * Store a newly created resource in storage.
+     * Store a newly created resource in storage.123456789123456789
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -31,9 +31,9 @@ class AdminController extends Controller
             'roles'=>$request->role,
             ]);
             $role = Role::firstOrCreate(['name' => $request->role]);
-   
+            $range_id = $request->role=="teacher"?[5,13]:[17,17];
             $permissions = DB::table('permissions')
-                            ->whereBetween('id',[5,13])->get();
+                            ->whereBetween('id',$range_id)->get();
            // dd($permissions);
             $role->syncPermissions($permissions);
        
