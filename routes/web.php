@@ -12,5 +12,23 @@
 */
 
 Route::get('/', function () {
-    return view('layout\layout');
+    return view('layouts\layout');
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['middleware' => ['auth']], function() {
+    Route::resource('roles','RoleController');
+    Route::resource('users','UserController');
+    Route::resource('courses','CourseController');
+});
+
+Route::get('/charts', 'UserController@charts');
+
+Route::get('/mail', function () {
+    return view('mails\mail');
 });
