@@ -5,10 +5,16 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
+use Illuminate\Support\Str;
+use App\Mail\MailtrapSending;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-
+use Mail;
+use DB;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+  
 class RegisterController extends Controller
 {
     /*
@@ -49,10 +55,10 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'Nid'=>['required','min:8','max:8','unique:users'],
+            
         ]);
     }
 
@@ -64,10 +70,23 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user =  User::create([
+            'Nid' =>$data['Nid'],
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'verify_token'=>Str::random(32),
+            'gender'=>$data['gender'],
+            'roles'=>$data['role']
+
         ]);
+        Mail::to($user->email)->send(new MailtrapSending($user));
+        $role = Role::firstOrCreate(['name' => $data['role']]);
+            $permossion_ids=$data['role'] == 'teacher'?[5,13]:[18,18];
+        $permissions = DB::table('permissions')->whereBetween('id',$permossion_ids)->get();
+  
+        $role->syncPermissions($permissions);
+        $user->assignRole([$role->id]);
+        return $user;
     }
 }

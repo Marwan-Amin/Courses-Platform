@@ -17,13 +17,10 @@ class CreateTeacherSupporterCourseTable extends Migration
             $table->bigIncrements('id');
             
             $table->string('teacher_id');
-            $table->foreign('teacher_id')->references('Nid')->on('users');
 
             $table->string('supporter_id');
-            $table->foreign('supporter_id')->references('Nid')->on('users');
 
             $table->unsignedInteger('course_id');
-            $table->foreign('course_id')->references('id')->on('courses');
 
             $table->timestamps();
         });

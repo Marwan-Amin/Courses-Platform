@@ -1,4 +1,6 @@
 <?php
+use App\Mail\MailtrapSending;
+use Illuminate\Support\Facades\Mail;
 
 /*
 |--------------------------------------------------------------------------
@@ -11,6 +13,26 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
+// Route::get('/send-mail', function () {
+
+//     Mail::to('amr.saami@gmail.com')->send(new MailtrapSending()); 
+
+//     return 'A message has been sent to Mailtrap!';
+
+// });
+
+
+Auth::routes(['verify' => true]);
+
+Route::get('/', 'HomeController@index')->name('home')->middleware('verified');
+
+Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
+Route::get('/verify/{token}', 'HomeController@verify')->name('verify');
+
+Route::group(['middleware' => ['auth']], function() {
+
+
+    Route::resource('roles','RoleController');
+    Route::resource('users','UserController');
+    Route::resource('courses','CourseController');
 });
