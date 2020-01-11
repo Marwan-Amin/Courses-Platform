@@ -28,7 +28,3 @@ Route::group(['middleware' => ['auth']], function() {
 });
 
 Route::get('/charts', 'UserController@charts');
-
-Route::get('/mail', function () {
-    return view('mails\mail');
-});

@@ -1,4 +1,15 @@
+<?php 
+echo "<pre>";
+print_r($join);
+echo "</pre>";
+// foreach ( $join as $value ) {
+//   echo "<p>stud_name : ". $value->name ."</p>";
+// }
 
+// foreach ( $results as $value ) {
+//   echo "<p>stud_id : ". $value->student_id . " and total : ". $value->total ." </p>";
+// }
+?>
 <!DOCTYPE html>
 <html>
 <head>

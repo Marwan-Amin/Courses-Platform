@@ -712,7 +712,7 @@
                   <h4>Confirm Your Email Address</h4> 
                   <a href="#">A Confirmation Email Has Been Sent Click On The Confirmation Button To Confirm Creation </a>
                 </div>
-                <form method="POST" action="">>
+                <form method="POST" action="">
                     @csrf
                     <button type="submit" class="btn btn-success mt-3" data-toggle="modal" data-target="#modal-success">
                     Verify Email Address
