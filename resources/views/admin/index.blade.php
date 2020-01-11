@@ -7,7 +7,7 @@
       <div class="col-12">
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title">DataTable Of Users</h3>
+            <h3 class="card-title">DataTable Of {{$value}}</h3>
           </div>
           <!-- /.card-header -->
           <div class="card-body">
@@ -23,7 +23,7 @@
               </tr>
               </thead>
               <tbody>
-                @foreach ($data as $user)
+                @foreach ($users as $user)
               <tr>
                 <td>{{$user->name}}</td>
                 <td>{{$user->email}}</td>

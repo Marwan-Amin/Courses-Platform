@@ -163,6 +163,7 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
+               <li class="nav-item" ><a class="btn btn-primary" href="{{route('admin.create_user')}}" role="button">Add User</a></li>
           <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -190,21 +191,39 @@
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                Teachers
+                View
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link active">
+                <a href="/admin/index/{{'all'}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>View Teachers</p>
+                  <p>All</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="/admin/index/{{'admin'}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Add Teachers</p>
+                  <p>Admin</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/admin/index/{{'teacher'}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Teachers</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/admin/index/{{'supporter'}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Supporter</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/admin/index/{{'student'}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Student</p>
                 </a>
               </li>
             </ul>
