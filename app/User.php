@@ -15,6 +15,8 @@ class User extends Authenticatable  implements MustVerifyEmail,JWTSubject
 
     use Notifiable,HasRoles;
 
+    protected $primaryKey = 'Nid';
+
     /**
      * The attributes that are mass assignable.
      *

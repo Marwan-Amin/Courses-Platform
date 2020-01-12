@@ -19,7 +19,7 @@ Route::group([
 ],function($router){
    
     Route::get('api/{token}', 'StudentController@verify')->name('api.mail');
-        Route::get('user', 'StudentController@getAuthenticatedUser');
+        Route::get('user', 'StudentController@getAuthenticatedUser')->middleware('auth:api');
         Route::get('logout', 'StudentController@logout');
         Route::put('user/{id}/edit', 'StudentController@edit');
         Route::get('closed', 'DataController@closed');
