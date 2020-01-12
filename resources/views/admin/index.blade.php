@@ -27,10 +27,11 @@
               <tr>
                 <td>{{$user->name}}</td>
                 <td>{{$user->email}}</td>
-                <td><img src={{$user->avatar}} ></td>
+                <td><img width=100px height=100px src={{asset($user->avatar)}} ></td>
                 <td>{{$user->roles}} </td>
-                <td><a class="btn btn-primary" href="" role="button">Edit</a></td></td>
-                <td><form method="POST" action=""> 
+                <td><a class="btn btn-primary" href="{{route('admin.edit',$user->id)}}" role="button">Edit</a>
+                  <a class="btn btn-primary" href="{{route('admin.show',$user->id)}}" role="button">view</a></td></td>
+                <td><form method="POST" action="/admin/{{$user->id}}"> 
                   @csrf
                   @method('delete')
                   <button class="btn btn-danger" type="submit" onclick="return confirm('Do you really want to delete?');">Delete</button></form> </td>
@@ -43,5 +44,5 @@
       </div>
     </div>
  </section>
-
+{{$users->links()}}
 @endsection

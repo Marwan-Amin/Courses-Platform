@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use DB;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use Illuminate\Support\Facades\Storage;
 class AdminController extends Controller
 {
     public function index(Request $request,$value)
@@ -57,6 +58,12 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
+        $image = '';
+        if(request()->avatar)
+        {
+            $image = Storage::putfile('images',$request->file('avatar'));
+            $request->avatar->move(public_path('images'),$image);
+        }
         $user = User::create([
             'Nid'=>$request->Nid,
         	'name' => $request->name, 
@@ -64,6 +71,7 @@ class AdminController extends Controller
             'password' => $request->password,
             'gender'=>$request->gender,
             'roles'=>$request->role,
+            'avatar' => $image,
             ]);
             $role = Role::firstOrCreate(['name' => $request->role]);
             $range_id = $request->role=="teacher"?[5,13]:[17,17];
@@ -73,7 +81,7 @@ class AdminController extends Controller
             $role->syncPermissions($permissions);
        
             $user->assignRole([$role->id]);
-        return redirect()->route('admin.index')
+        return redirect()->route('admin.index',["value"=>"all"])
                         ->with('success','User created successfully');
     }
     public function create_user(Request $request)
@@ -81,14 +89,6 @@ class AdminController extends Controller
            return view('admin.create_user');
     }
     
-    public function view_teacher(Request $request)
-    {
-           return view('admin.view_teacher', [
-                'users' => DB::table('users')->where('roles', '=', 'teacher')->get()
-            ]);
-    }
-    
-    ///////////////////////////////////////////////////////////////
     /**
      * Display the specified resource.
      *
@@ -98,7 +98,8 @@ class AdminController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-        return view('users.show',compact('user'));
+        //dd($user);
+        return view('admin.show',compact('user'));
     }
 
 
@@ -111,11 +112,11 @@ class AdminController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        $roles = Role::pluck('name','name')->all();
-        $userRole = $user->roles->pluck('name','name')->all();
+        //$roles = Role::pluck('name','name')->all();
+        //$userRole = $user->roles->pluck('name','name')->all();
 
 
-        return view('users.edit',compact('user','roles','userRole'));
+        return view('admin.edit',compact('user'));
     }
 
 
@@ -128,32 +129,27 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'name' => 'required',
-            'email' => 'required|email|unique:users,email,'.$id,
-            'password' => 'same:confirm-password',
-            'roles' => 'required'
-        ]);
+            $user=User::findOrFail($id);
+            $user->Nid = $request->Nid;
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->password = $request->password;
+            $user->roles = $request->role;
+            $user->gender = $request->gender;
+            $user->avatar = $request->avatar;
+            $user->save();
 
-
-        $input = $request->all();
-        if(!empty($input['password'])){ 
-            $input['password'] = Hash::make($input['password']);
-        }else{
-            $input = array_except($input,array('password'));    
-        }
-
-
-        $user = User::find($id);
-        $user->update($input);
-        DB::table('model_has_roles')->where('model_id',$id)->delete();
-
-
-        $user->assignRole($request->input('roles'));
-
-
-        return redirect()->route('users.index')
-                        ->with('success','User updated successfully');
+            DB::table('model_has_roles')->where('model_id',$id)->delete();
+            $role = Role::firstOrCreate(['name' => $request->role]);
+            $range_id = $request->role=="teacher"?[5,13]:[17,17];
+            $permissions = DB::table('permissions')
+                            ->whereBetween('id',$range_id)->get();
+           // dd($permissions);
+            $role->syncPermissions($permissions);
+       
+            $user->assignRole([$role->id]);
+    
+            return redirect()->route('admin.index',["value"=>"all"]);
     }
 
 
@@ -165,9 +161,11 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
+        $value = 'all';
         User::find($id)->delete();
-        return redirect()->route('users.index')
-                        ->with('success','User deleted successfully');
+        return redirect()->route('admin.index',["value"=>"all"]);
+        /*return view('admin.index')
+                        ->with('success','User deleted successfully');*/
     }
     
 }

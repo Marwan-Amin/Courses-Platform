@@ -12,17 +12,7 @@ use Hash;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function view_teacher(Request $request)
-    {
-           return view('admin.view_teacher', [
-                'users' => DB::table('users')->where('roles', '=', 'teacher')->get()
-            ]);
-    }
+    
     public function create_user(Request $request)
     {
            return view('admin.create_user');
@@ -87,7 +77,8 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-        return view('users.show',compact('user'));
+        return view('admin.show');
+        //,compact('user'));
     }
 
 
