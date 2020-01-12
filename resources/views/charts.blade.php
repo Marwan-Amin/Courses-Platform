@@ -1,15 +1,3 @@
-<?php 
-echo "<pre>";
-print_r($join);
-echo "</pre>";
-// foreach ( $join as $value ) {
-//   echo "<p>stud_name : ". $value->name ."</p>";
-// }
-
-// foreach ( $results as $value ) {
-//   echo "<p>stud_id : ". $value->student_id . " and total : ". $value->total ." </p>";
-// }
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -761,7 +749,7 @@ echo "</pre>";
             </div>
             <!-- /.card -->
 
-            <!-- PIE CHART -->
+            <!--start PIE CHART for male and female -->
             <div class="card card-danger">
               <div class="card-header">
                 <h3 class="card-title">Male - Female Students</h3>
@@ -777,6 +765,26 @@ echo "</pre>";
               </div>
               <!-- /.card-body -->
             </div>
+            <!--end PIE CHART for male and female -->
+
+            <!--start PIE CHART for top enrolled students -->
+            <div class="card card-danger">
+              <div class="card-header">
+                <h3 class="card-title">Top enrolled </h3>
+
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                  </button>
+                  <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+                </div>
+              </div>
+              <div class="card-body">
+                <canvas id="pieChart2" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!--end PIE CHART for top enrolled students -->            
+
             <!-- /.card -->
 
           </div>
@@ -904,7 +912,7 @@ echo "</pre>";
           pointStrokeColor    : 'rgba(60,141,188,1)',
           pointHighlightFill  : '#fff',
           pointHighlightStroke: 'rgba(60,141,188,1)',
-          data                : [28, 48, 40, 19, 86, 27, 90]
+          data                : [100, 48, 40, 19, 86, 27, 90]
         },
         {
           label               : 'Electronics',
@@ -915,7 +923,7 @@ echo "</pre>";
           pointStrokeColor    : '#c1c7d1',
           pointHighlightFill  : '#fff',
           pointHighlightStroke: 'rgba(220,220,220,1)',
-          data                : [65, 59, 80, 81, 56, 55, 40]
+          data                : [20, 59, 80, 81, 56, 55, 40]
         },
       ]
     }
@@ -1010,6 +1018,41 @@ echo "</pre>";
       data: pieData,
       options: pieOptions      
     })
+
+
+
+    //-------------
+    //- PIE CHART  of top enrolled students
+    //-------------
+    // Get context with jQuery - using jQuery's .get() method.
+    var donutData        = {
+      labels: [
+
+        <?php foreach( $results as $value ) { echo  "'std_". $value->student_id .  "" . "::". $value->total . "',"   ;  } ?> 
+
+      ],
+      datasets: [
+        {
+          
+          data: [ <?php foreach( $results as $value ) { echo  $value->total . "," ;  } ?>  ],
+          backgroundColor : ['#f56954', '#00a65a' , '#f16934','#f11134' ],
+        }
+      ]
+    }
+    var pieChartCanvas = $('#pieChart2').get(0).getContext('2d')
+    var pieData        = donutData;
+    var pieOptions     = {
+      maintainAspectRatio : false,
+      responsive : true,
+    }
+    //Create pie or douhnut chart of top enrolled students
+    // You can switch between pie and douhnut using the method below.
+    var pieChart = new Chart(pieChartCanvas, {
+      type: 'pie',
+      data: pieData,
+      options: pieOptions      
+    })
+
 
     //-------------
     //- BAR CHART -

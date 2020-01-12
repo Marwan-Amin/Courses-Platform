@@ -27,4 +27,6 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('courses','CourseController');
 });
 
+//make charts routs
 Route::get('/charts', 'UserController@charts');
+

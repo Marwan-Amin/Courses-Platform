@@ -1,26 +1,22 @@
 <!DOCTYPE html>
-<!--
-This is a starter template page. Use this page to start your new project from
-scratch. This page gets rid of all links and provides the needed markup only.
--->
-<html lang="en">
+<html>
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>AdminLTE 3 | ChartJS</title>
+  <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-
-  <title>AdminLTE 3 | Starter</title>
-
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="/bower_components/admin-lte/plugins/fontawesome-free/css/all.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="bower_components\admin-lte\plugins\fontawesome-free\css\all.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="/bower_components/admin-lte/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="bower_components\admin-lte\dist/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
-
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
@@ -29,7 +25,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Home</a>
+        <a href="bower_components\admin-lte\index3.html" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contact</a>
@@ -60,7 +56,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <a href="#" class="dropdown-item">
             <!-- Message Start -->
             <div class="media">
-              <img src="/bower_components/admin-lte/dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+              <img src="bower_components\admin-lte\dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
               <div class="media-body">
                 <h3 class="dropdown-item-title">
                   Brad Diesel
@@ -76,7 +72,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <a href="#" class="dropdown-item">
             <!-- Message Start -->
             <div class="media">
-              <img src="/bower_components/admin-lte/dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+              <img src="bower_components\admin-lte\dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
               <div class="media-body">
                 <h3 class="dropdown-item-title">
                   John Pierce
@@ -92,7 +88,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <a href="#" class="dropdown-item">
             <!-- Message Start -->
             <div class="media">
-              <img src="/bower_components/admin-lte/dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+              <img src="bower_components\admin-lte\dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
               <div class="media-body">
                 <h3 class="dropdown-item-title">
                   Nora Silvester
@@ -115,7 +111,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <span class="badge badge-warning navbar-badge">15</span>
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <span class="dropdown-header">15 Notifications</span>
+          <span class="dropdown-item dropdown-header">15 Notifications</span>
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item">
             <i class="fas fa-envelope mr-2"></i> 4 new messages
@@ -136,8 +132,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#"><i
-            class="fas fa-th-large"></i></a>
+        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#">
+          <i class="fas fa-th-large"></i>
+        </a>
       </li>
     </ul>
   </nav>
@@ -146,8 +143,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-      <img src="/bower_components/admin-lte/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+    <a href="bower_components\admin-lte\index3.html" class="brand-link">
+      <img src="bower_components\admin-lte\dist/img/AdminLTELogo.png"
+           alt="AdminLTE Logo"
+           class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">AdminLTE 3</span>
     </a>
@@ -157,7 +156,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="/bower_components/admin-lte/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="bower_components\admin-lte\dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block">Alexander Pierce</a>
@@ -169,36 +168,516 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link active">
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                Starter Pages
+                Dashboard
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link active">
+                <a href="bower_components\admin-lte\index.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Active Page</p>
+                  <p>Dashboard v1</p>
                 </a>
+              </li>
+              <li class="nav-item">
+                <a href="bower_components\admin-lte\index2.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Dashboard v2</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="bower_components\admin-lte\index3.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Dashboard v3</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="../widgets.html" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Widgets
+                <span class="right badge badge-danger">New</span>
+              </p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                Layout Options
+                <i class="fas fa-angle-left right"></i>
+                <span class="badge badge-info right">6</span>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="../layout/top-nav.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Top Navigation</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../layout/boxed.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Boxed</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../layout/fixed-sidebar.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Fixed Sidebar</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../layout/fixed-topnav.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Fixed Navbar</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../layout/fixed-footer.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Fixed Footer</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../layout/collapsed-sidebar.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Collapsed Sidebar</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item has-treeview menu-open">
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fas fa-chart-pie"></i>
+              <p>
+                Charts
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="chartjs.html" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>ChartJS</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="flot.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Flot</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="inline.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Inline</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-tree"></i>
+              <p>
+                UI Elements
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="../UI/general.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>General</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../UI/icons.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Icons</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../UI/buttons.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Buttons</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../UI/sliders.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Sliders</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../UI/modals.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Modals & Alerts</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../UI/navbar.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Navbar & Tabs</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../UI/timeline.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Timeline</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../UI/ribbons.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Ribbons</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-edit"></i>
+              <p>
+                Forms
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="../forms/general.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>General Elements</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../forms/advanced.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Advanced Elements</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../forms/editors.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Editors</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-table"></i>
+              <p>
+                Tables
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="../tables/simple.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Simple Tables</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../tables/data.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>DataTables</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../tables/jsgrid.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>jsGrid</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-header">EXAMPLES</li>
+          <li class="nav-item">
+            <a href="../calendar.html" class="nav-link">
+              <i class="nav-icon far fa-calendar-alt"></i>
+              <p>
+                Calendar
+                <span class="badge badge-info right">2</span>
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="../gallery.html" class="nav-link">
+              <i class="nav-icon far fa-image"></i>
+              <p>
+                Gallery
+              </p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon far fa-envelope"></i>
+              <p>
+                Mailbox
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="../mailbox/mailbox.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Inbox</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../mailbox/compose.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Compose</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../mailbox/read-mail.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Read</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-book"></i>
+              <p>
+                Pages
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="../examples/invoice.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Invoice</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../examples/profile.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Profile</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../examples/e_commerce.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>E-commerce</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../examples/projects.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Projects</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../examples/project_add.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Project Add</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../examples/project_edit.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Project Edit</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../examples/project_detail.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Project Detail</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../examples/contacts.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Contacts</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon far fa-plus-square"></i>
+              <p>
+                Extras
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="../examples/login.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Login</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../examples/register.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Register</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../examples/forgot-password.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Forgot Password</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../examples/recover-password.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Recover Password</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../examples/lockscreen.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Lockscreen</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../examples/legacy-user-menu.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Legacy User Menu</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../examples/language-menu.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Language Menu</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../examples/404.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Error 404</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../examples/500.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Error 500</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../examples/pace.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Pace</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../examples/blank.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Blank Page</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="bower_components\admin-lte\starter.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Starter Page</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-header">MISCELLANEOUS</li>
+          <li class="nav-item">
+            <a href="https://adminlte.io/docs/3.0" class="nav-link">
+              <i class="nav-icon fas fa-file"></i>
+              <p>Documentation</p>
+            </a>
+          </li>
+          <li class="nav-header">MULTI LEVEL EXAMPLE</li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fas fa-circle nav-icon"></i>
+              <p>Level 1</p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-circle"></i>
+              <p>
+                Level 1
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Level 2</p>
+                </a>
+              </li>
+              <li class="nav-item has-treeview">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                    Level 2
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <i class="far fa-dot-circle nav-icon"></i>
+                      <p>Level 3</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <i class="far fa-dot-circle nav-icon"></i>
+                      <p>Level 3</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <i class="far fa-dot-circle nav-icon"></i>
+                      <p>Level 3</p>
+                    </a>
+                  </li>
+                </ul>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Inactive Page</p>
+                  <p>Level 2</p>
                 </a>
               </li>
             </ul>
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Simple Link
-                <span class="right badge badge-danger">New</span>
-              </p>
+              <i class="fas fa-circle nav-icon"></i>
+              <p>Level 1</p>
+            </a>
+          </li>
+          <li class="nav-header">LABELS</li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon far fa-circle text-danger"></i>
+              <p class="text">Important</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon far fa-circle text-warning"></i>
+              <p>Warning</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon far fa-circle text-info"></i>
+              <p>Informational</p>
             </a>
           </li>
         </ul>
@@ -208,92 +687,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- /.sidebar -->
   </aside>
 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Starter Page</h1>
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Starter Page</li>
-            </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
-
-    <!-- Main content -->
-    <div class="content">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-lg-6">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up the bulk of the card's
-                  content.
-                </p>
-
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
-              </div>
-            </div>
-
-            <div class="card card-primary card-outline">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up the bulk of the card's
-                  content.
-                </p>
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
-              </div>
-            </div><!-- /.card -->
-          </div>
-          <!-- /.col-md-6 -->
-          <div class="col-lg-6">
-            <div class="card">
-              <div class="card-header">
-                <h5 class="m-0">Featured</h5>
-              </div>
-              <div class="card-body">
-                <h6 class="card-title">Special title treatment</h6>
-
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
-            </div>
-
-            <div class="card card-primary card-outline">
-              <div class="card-header">
-                <h5 class="m-0">Featured</h5>
-              </div>
-              <div class="card-body">
-                <h6 class="card-title">Special title treatment</h6>
-
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
-            </div>
-          </div>
-          <!-- /.col-md-6 -->
-        </div>
-        <!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
+@yeild('content')
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
@@ -320,10 +714,229 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- REQUIRED SCRIPTS -->
 
 <!-- jQuery -->
-<script src="/bower_components/admin-lte/plugins/jquery/jquery.min.js"></script>
+<script src="bower_components\admin-lte\plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
-<script src="/bower_components/admin-lte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="bower_components\admin-lte\plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- ChartJS -->
+<script src="bower_components\admin-lte\plugins/chart.js/Chart.min.js"></script>
 <!-- AdminLTE App -->
-<script src="/bower_components/admin-lte/dist/js/adminlte.min.js"></script>
+<script src="bower_components\admin-lte\dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="bower_components\admin-lte\dist/js/demo.js"></script>
+<!-- page script -->
+<script>
+  $(function () {
+    /* ChartJS
+     * -------
+     * Here we will create a few charts using ChartJS
+     */
+
+    //--------------
+    //- AREA CHART -
+    //--------------
+
+    // Get context with jQuery - using jQuery's .get() method.
+    var areaChartCanvas = $('#areaChart').get(0).getContext('2d')
+
+    var areaChartData = {
+      labels  : ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+      datasets: [
+        {
+          label               : 'Digital Goods',
+          backgroundColor     : 'rgba(60,141,188,0.9)',
+          borderColor         : 'rgba(60,141,188,0.8)',
+          pointRadius          : false,
+          pointColor          : '#3b8bba',
+          pointStrokeColor    : 'rgba(60,141,188,1)',
+          pointHighlightFill  : '#fff',
+          pointHighlightStroke: 'rgba(60,141,188,1)',
+          data                : [28, 48, 40, 19, 86, 27, 90]
+        },
+        {
+          label               : 'Electronics',
+          backgroundColor     : 'rgba(210, 214, 222, 1)',
+          borderColor         : 'rgba(210, 214, 222, 1)',
+          pointRadius         : false,
+          pointColor          : 'rgba(210, 214, 222, 1)',
+          pointStrokeColor    : '#c1c7d1',
+          pointHighlightFill  : '#fff',
+          pointHighlightStroke: 'rgba(220,220,220,1)',
+          data                : [65, 59, 80, 81, 56, 55, 40]
+        },
+      ]
+    }
+
+    var areaChartOptions = {
+      maintainAspectRatio : false,
+      responsive : true,
+      legend: {
+        display: false
+      },
+      scales: {
+        xAxes: [{
+          gridLines : {
+            display : false,
+          }
+        }],
+        yAxes: [{
+          gridLines : {
+            display : false,
+          }
+        }]
+      }
+    }
+
+    // This will get the first returned node in the jQuery collection.
+    var areaChart       = new Chart(areaChartCanvas, { 
+      type: 'line',
+      data: areaChartData, 
+      options: areaChartOptions
+    })
+
+    //-------------
+    //- LINE CHART -
+    //--------------
+    var lineChartCanvas = $('#lineChart').get(0).getContext('2d')
+    var lineChartOptions = jQuery.extend(true, {}, areaChartOptions)
+    var lineChartData = jQuery.extend(true, {}, areaChartData)
+    lineChartData.datasets[0].fill = false;
+    lineChartData.datasets[1].fill = false;
+    lineChartOptions.datasetFill = false
+
+    var lineChart = new Chart(lineChartCanvas, { 
+      type: 'line',
+      data: lineChartData, 
+      options: lineChartOptions
+    })
+
+    //-------------
+    //- DONUT CHART -
+    //-------------
+    // Get context with jQuery - using jQuery's .get() method.
+    var donutChartCanvas = $('#donutChart').get(0).getContext('2d')
+    var donutData        = {
+      labels: [
+          'Males', 
+          'Female',
+          
+      ],
+      datasets: [
+        {
+          data: [  "{{count($males)}}" ,"{{count($females)}}" ],
+          backgroundColor : ['#f56954', '#00a65a'],
+        }
+      ]
+    }
+    var donutOptions     = {
+      maintainAspectRatio : false,
+      responsive : true,
+    }
+    //Create pie or douhnut chart
+    // You can switch between pie and douhnut using the method below.
+    var donutChart = new Chart(donutChartCanvas, {
+      type: 'doughnut',
+      data: donutData,
+      options: donutOptions      
+    })
+
+    //-------------
+    //- PIE CHART -
+    //-------------
+    // Get context with jQuery - using jQuery's .get() method.
+    var pieChartCanvas = $('#pieChart').get(0).getContext('2d')
+    var pieData        = donutData;
+    var pieOptions     = {
+      maintainAspectRatio : false,
+      responsive : true,
+    }
+    //Create pie or douhnut chart
+    // You can switch between pie and douhnut using the method below.
+    var pieChart = new Chart(pieChartCanvas, {
+      type: 'pie',
+      data: pieData,
+      options: pieOptions      
+    })
+
+
+
+    //-------------
+    //- PIE CHART  of top enrolled students
+    //-------------
+    // Get context with jQuery - using jQuery's .get() method.
+    var donutData        = {
+      labels: [
+        <?php foreach( $results as $value ) { echo  "'std_". $value->student_id .  "" . "::". $value->total . "',"   ;  } ?> 
+
+      ],
+      datasets: [
+        {
+          data: [ <?php foreach( $results as $value ) { echo  $value->total . "," ;  } ?>  ],
+          backgroundColor : ['#f56954', '#00a65a' , '#f16934','#f11134' ],
+        }
+      ]
+    }
+    var pieChartCanvas = $('#pieChart2').get(0).getContext('2d')
+    var pieData        = donutData;
+    var pieOptions     = {
+      maintainAspectRatio : false,
+      responsive : true,
+    }
+    //Create pie or douhnut chart of top enrolled students
+    // You can switch between pie and douhnut using the method below.
+    var pieChart = new Chart(pieChartCanvas, {
+      type: 'pie',
+      data: pieData,
+      options: pieOptions      
+    })
+
+
+    //-------------
+    //- BAR CHART -
+    //-------------
+    var barChartCanvas = $('#barChart').get(0).getContext('2d')
+    var barChartData = jQuery.extend(true, {}, areaChartData)
+    var temp0 = areaChartData.datasets[0]
+    var temp1 = areaChartData.datasets[1]
+    barChartData.datasets[0] = temp1
+    barChartData.datasets[1] = temp0
+
+    var barChartOptions = {
+      responsive              : true,
+      maintainAspectRatio     : false,
+      datasetFill             : false
+    }
+
+    var barChart = new Chart(barChartCanvas, {
+      type: 'bar', 
+      data: barChartData,
+      options: barChartOptions
+    })
+
+    //---------------------
+    //- STACKED BAR CHART -
+    //---------------------
+    var stackedBarChartCanvas = $('#stackedBarChart').get(0).getContext('2d')
+    var stackedBarChartData = jQuery.extend(true, {}, barChartData)
+
+    var stackedBarChartOptions = {
+      responsive              : true,
+      maintainAspectRatio     : false,
+      scales: {
+        xAxes: [{
+          stacked: true,
+        }],
+        yAxes: [{
+          stacked: true
+        }]
+      }
+    }
+
+    var stackedBarChart = new Chart(stackedBarChartCanvas, {
+      type: 'bar', 
+      data: stackedBarChartData,
+      options: stackedBarChartOptions
+    })
+  })
+</script>
 </body>
 </html>
