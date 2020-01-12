@@ -23,7 +23,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Home</a>
+        <a href="/admin" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link"> Contact </a>
@@ -173,13 +173,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link active">
+                <a href="/courses" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View courses</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="/courses/create" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add course</p>
                 </a>
@@ -197,6 +197,7 @@
   <div class="content-wrapper">
    
 @yield('content')
+
     <!-- Main content -->
     <div class="content">
       <!-- /.container-fluid -->
@@ -219,7 +220,7 @@
   <footer class="main-footer">
     <!-- To the right -->
     <div class="float-right d-none d-sm-inline">
-      Anything you want
+      Courses platform
     </div>
     <!-- Default to the left -->
     <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
@@ -235,5 +236,6 @@
 <script src="/bower_components/admin-lte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="/bower_components/admin-lte/dist/js/adminlte.min.js"></script>
+<script src="/public/bower_components/admin-lte/dist/js/demo.js"></script>
 </body>
 </html>

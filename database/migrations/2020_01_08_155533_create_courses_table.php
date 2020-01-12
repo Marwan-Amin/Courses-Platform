@@ -17,7 +17,7 @@ class CreateCoursesTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('cover_image');
-            $table->bigIncrements('price');
+            $table->bigInteger('price');
             $table->dateTime('start_at', 0);
             $table->dateTime('end_at', 0);
             $table->timestamps();

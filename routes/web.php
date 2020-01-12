@@ -11,6 +11,25 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/admin', function () {
     return view('index');
 });
+
+Route::get('courses', 'CourseController@index')->name('courses.index');
+
+Route::post('courses', 'CourseController@store');
+
+Route::get('courses/create', 'CourseController@create')->name('courses.create');
+
+Route::get('/courses/{course}', 'CourseController@show')->name('courses.show');
+
+Route::get('/courses/{course}/edit', 'CourseController@edit')->name('courses.edit');
+
+Route::put('/courses/{course}', 'CourseController@update')->name('courses.update');
+
+Route::delete('/courses/{course}', 'CourseController@destroy')->name('courses.destroy');
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
