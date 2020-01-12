@@ -14,7 +14,7 @@
             </div>
             <!-- /.card-header -->
             <!-- form start -->
-            <form role="form" action="/admin/{{$user->id}}" method="post">
+            <form role="form" action="/admin/{{$user->id}}" method="post" enctype="multipart/form-data">
               @method('PATCH')
               @csrf
               <div class="card-body">
@@ -53,9 +53,7 @@
                       <input type="file" class="custom-file-input" name="avatar" value={{$user->avatar}} id="exampleInputFile">
                       <label class="custom-file-label" for="exampleInputFile">Avatar Image</label>
                     </div>
-                    <div class="input-group-append">
-                      <span class="input-group-text" id="">Upload Image</span>
-                    </div>
+              
                   </div>
                 </div>
               </div>

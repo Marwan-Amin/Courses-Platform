@@ -174,13 +174,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link active">
+                <a href="/courses" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View courses</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="/courses/create" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add course</p>
                 </a>

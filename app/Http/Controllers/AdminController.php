@@ -129,6 +129,13 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $image = '';
+        $image = request()->avatar;
+        if(request()->avatar)
+        {
+            $image = Storage::putfile('images',$request->file('avatar'));
+            $request->avatar->move(public_path('images'),$image);
+        }
             $user=User::findOrFail($id);
             $user->Nid = $request->Nid;
             $user->name = $request->name;
@@ -136,11 +143,13 @@ class AdminController extends Controller
             $user->password = $request->password;
             $user->roles = $request->role;
             $user->gender = $request->gender;
-            $user->avatar = $request->avatar;
+            $user->avatar = $image;
             $user->save();
 
-            DB::table('model_has_roles')->where('model_id',$id)->delete();
             $role = Role::firstOrCreate(['name' => $request->role]);
+            DB::table('model_has_roles')->where('model_id',$id)->delete();
+            $user->removeRole($role->id);
+            
             $range_id = $request->role=="teacher"?[5,13]:[17,17];
             $permissions = DB::table('permissions')
                             ->whereBetween('id',$range_id)->get();
