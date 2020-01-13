@@ -14,7 +14,11 @@ return [
     */
 
     'defaults' => [
+<<<<<<< HEAD
         'guard' => 'web',
+=======
+        'guard' => 'api',
+>>>>>>> 478984a18f64a3445e593c70eb4aabdde72586aa
         'passwords' => 'users',
     ],
 
@@ -42,7 +46,11 @@ return [
         ],
 
         'api' => [
+<<<<<<< HEAD
             'driver' => 'token',
+=======
+            'driver' => 'jwt',
+>>>>>>> 478984a18f64a3445e593c70eb4aabdde72586aa
             'provider' => 'users',
             'hash' => false,
         ],

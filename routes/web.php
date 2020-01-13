@@ -1,5 +1,9 @@
 <?php
 
+=======
+use App\Mail\MailtrapSending;
+use Illuminate\Support\Facades\Mail;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,6 +14,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 
 Route::get('/admin', function () {
     return view('index');
@@ -72,3 +77,14 @@ Route::get('/admin/{id}/edit', 'TeacherController@edit')->name('admin.edit');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//--------------------------------------------------------------------------------------------------------
+
+Auth::routes(['verify' => true]);
+
+Route::get('/', 'HomeController@index')->name('home')->middleware('verified')->middleware('auth');
+
+Route::get('/home', 'HomeController@index')->name('home')->middleware('verified')->middleware('auth');
+Route::get('/verify/{token}', 'HomeController@verify')->name('verify');
+
+

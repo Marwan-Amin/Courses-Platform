@@ -3,9 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use BeyondCode\Comments\Traits\HasComments;
+
 
 class Course extends Model
 {
+    use HasComments;
+
     protected $fillable = [
         'name', 'cover_image', 'price', 'start_at','end_at','teacher_id'
     ];
@@ -19,5 +23,4 @@ class Course extends Model
     {
         return $this->morphedByMany('App\Student', 'student_teacher_course');
     }
-
 }
