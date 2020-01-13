@@ -89,6 +89,16 @@ class AdminController extends Controller
     {
            return view('admin.create_user');
     }
+    //assign course to a supporter
+    public function supp_course()
+    {
+       // $supporters = DB::table('users')->where('roles', '=', 'supporter')->get();
+        //$courses = DB::table('courses')->get();
+
+           return view('admin.supp_course',
+           ['supporters'=> DB::table('users')->where('roles', '=', 'supporter')->get()],
+           ['courses'=>DB::table('courses')->get() ]);
+    }
     
     /**
      * Display the specified resource.
