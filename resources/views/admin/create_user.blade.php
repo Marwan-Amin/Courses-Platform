@@ -38,11 +38,14 @@
                     <input type="radio" name="gender" value="male"> Male<br>
                     <input type="radio" name="gender" value="female"> Female<br>                  
                   </div>
+                  @role('admin')
                 <div class="form-group">
                   <label for="exampleInputEmail1">User Role</label><br>
                   <input type="radio" name="role" value="teacher">Teacher<br>
-                  <input type="radio" name="role" value="supporter">Supporter<br>                
+                  <input type="radio" name="role" value="supporter">Supporter<br>
+                  <input type="radio" name="role" value="student">Student<br>                
                 </div>
+                @endrole
                 <div class="form-group">
                   <label for="exampleInputEmail1">Birth Date</label><br>
                   <input type="date" name="birth" value="teacher">

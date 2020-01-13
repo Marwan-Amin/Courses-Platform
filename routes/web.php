@@ -47,7 +47,26 @@ Route::patch('/admin/{id}', 'AdminController@update')->name('admin.update');
 
 Route::get('/admin/{id}/edit', 'AdminController@edit')->name('admin.edit');
 
-Route::get('/admin/supp/supp','AdminController@supp')->name('admin.supp');
+Route::get('/admin/supp/supp-course','AdminController@supp_course')->name('admin.supp_course');
+
+//-----------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------
+// Routing Teacher
+
+Route::get('/admin/create','TeacherController@create')->name('admin.create');
+
+Route::post('/admin/user','TeacherController@store')->name('admin.store');
+
+Route::get('/admin/index/{value}','TeacherController@index')->name('admin.index');
+
+Route::get('/admin/{id}','TeacherController@show')->name('admin.show');
+
+Route::delete('/admin/{id}', 'TeacherController@destroy')->name('admin.destroy');
+
+Route::patch('/admin/{id}', 'TeacherController@update')->name('admin.update');
+
+Route::get('/admin/{id}/edit', 'TeacherController@edit')->name('admin.edit');
+
 
 
 Auth::routes();
