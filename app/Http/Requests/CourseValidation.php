@@ -25,8 +25,8 @@ class CourseValidation extends FormRequest
     {
         return [
             'name' => 'required|unique:courses|min:3',
-            'image' => 'required',
-            'price' => 'required',
+            'image' => 'required|mimes:jpeg,png|',
+            'price' =>  'required|numeric|',
             'start_at' => 'required',
             'end_at' => 'required',
         ];

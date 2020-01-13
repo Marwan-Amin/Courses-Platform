@@ -1,7 +1,10 @@
-@extends('Layout.layout')
+@extends('Layout.admin')
+
 
 @section('content')
 <div class="container">
+
+
 
 
 <div class="card">

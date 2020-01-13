@@ -1,4 +1,5 @@
-@extends('Layout.layout');
+@extends('Layout.admin')
+
 
 @section("content")
 
@@ -46,6 +47,12 @@
               <div class="form-group">
                 <label for="inputProjectLeader">Course ends at</label>
                 <input type="datetime-local" id="end_at" name="end_at" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="inputProjectLeader">Assign course to:</label>
+                <select class="form-control" id="teacher">
+                  <option>1</option>
+                </select>
               </div>
 
           </div>

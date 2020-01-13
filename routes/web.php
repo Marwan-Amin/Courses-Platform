@@ -14,7 +14,7 @@
 Route::get('/admin', function () {
     return view('index');
 });
-
+// Routing courses
 Route::get('courses', 'CourseController@index')->name('courses.index');
 
 Route::post('courses', 'CourseController@store');
@@ -29,6 +29,23 @@ Route::put('/courses/{course}', 'CourseController@update')->name('courses.update
 
 Route::delete('/courses/{course}', 'CourseController@destroy')->name('courses.destroy');
 
+//-------------------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------
+// Routing Admin
+
+Route::get('/admin/create_user','AdminController@create_user')->name('admin.create_user');
+
+Route::post('/admin/user','AdminController@store')->name('admin.store');
+
+Route::get('/admin/index/{value}','AdminController@index')->name('admin.index');
+
+Route::get('/admin/{id}','AdminController@show')->name('admin.show');
+
+Route::delete('/admin/{id}', 'AdminController@destroy')->name('admin.destroy');
+
+Route::patch('/admin/{id}', 'AdminController@update')->name('admin.update');
+
+Route::get('/admin/{id}/edit', 'AdminController@edit')->name('admin.edit');
 
 Auth::routes();
 

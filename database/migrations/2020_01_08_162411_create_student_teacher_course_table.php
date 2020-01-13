@@ -16,9 +16,15 @@ class CreateStudentTeacherCourseTable extends Migration
         Schema::create('student_teacher_course', function (Blueprint $table) {
             $table->bigIncrements('id');
 
-            $table->unsignedInteger('student_id');
-            $table->string('teacher_id');
-            $table->unsignedInteger('course_id');
+            $table->unsignedBigInteger('student_id');
+            $table->foreign('student_id')->references('id')->on('users');
+
+            $table->unsignedBigInteger('teacher_id');
+            $table->foreign('teacher_id')->references('id')->on('users');
+
+            $table->unsignedBigInteger('course_id ');
+            $table->foreign('course_id')->references('id')->on('users');
+
 
             $table->timestamps();
         });

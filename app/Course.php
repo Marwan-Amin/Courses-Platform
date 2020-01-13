@@ -9,4 +9,15 @@ class Course extends Model
     protected $fillable = [
         'name', 'cover_image', 'price', 'start_at','end_at',
     ];
+
+    public function teacher()
+    {
+        return $this->belongsTo(Teacher::class);
+    }
+
+    public function supporter()
+    {
+        return $this->belongsTo(Supporter::class);
+    }
+
 }

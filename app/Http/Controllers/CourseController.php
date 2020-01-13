@@ -35,6 +35,7 @@ class CourseController extends Controller
         } 
 
         $course->cover_image = $image;
+        
         $course->start_at = request()->start_at;
         $course->end_at = request()->end_at;
         $course->save();
@@ -51,6 +52,7 @@ class CourseController extends Controller
     function edit($course)
     {
         $aabb = Course::find($course);
+        
         $array2 = array ("aabb"=> $aabb);
         return view("Courses.edit", $array2);
     }
@@ -62,6 +64,7 @@ class CourseController extends Controller
         
         $image='';
         $image = request()->cover_images;
+        
         if(request()->image){
             $image =  Storage::putfile('images', request()->file('image'));
             request()->image->move(public_path('images'), $image);
