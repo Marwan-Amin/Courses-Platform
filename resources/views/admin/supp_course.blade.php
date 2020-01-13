@@ -1,8 +1,5 @@
 @extends('layouts.admin')
-
-
 @section("content")
-
 <section class="content">
       <div class="row">
         <div class="col-md-6 mx-auto mt-5">
@@ -30,7 +27,7 @@
               <div class="form-group">
                 <label for="inputProjectLeader">Assign course to:</label>
                 <select name="supporter" class="form-control" id="supporter">
-                @foreach ($supporters as $supporterer)
+                @foreach ($supporters as $supporter)
                 <option value="{{$supporter->id}}">{{$supporter->name}}</option>
                 @endforeach 
               </select>
@@ -40,7 +37,7 @@
       </div>
       <div class="row">
         <div class="col-12">
-          <input type="submit" value="Create new course" class="btn btn-success float-right">
+          <input type="submit" value="Assign course" class="btn btn-success float-right">
         </div>
       </div>
       </form>

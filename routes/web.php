@@ -23,7 +23,7 @@ Route::delete('/admin/{id}', 'AdminController@destroy')->name('admin.destroy');
 Route::patch('/admin/{id}', 'AdminController@update')->name('admin.update');
 Route::get('/admin/{id}/edit', 'AdminController@edit')->name('admin.edit');
 
-Route::get('/admin/supp-course','AdminController@supp_course')->name('admin.supp_course');
+Route::get('/admin/supp/supp-course','AdminController@supp_course')->name('admin.supp_course');
 
 //courses routes
 Route::get('courses', 'CourseController@index')->name('courses.index');

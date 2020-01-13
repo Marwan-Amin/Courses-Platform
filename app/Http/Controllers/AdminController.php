@@ -92,8 +92,9 @@ class AdminController extends Controller
     //assign course to a supporter
     public function supp_course()
     {
-       // $supporters = DB::table('users')->where('roles', '=', 'supporter')->get();
-        //$courses = DB::table('courses')->get();
+        $supporters = DB::table('users')->where('roles', '=', 'supporter')->get();
+        $courses = DB::table('courses')->get();
+       // dd($courses);
 
            return view('admin.supp_course',
            ['supporters'=> DB::table('users')->where('roles', '=', 'supporter')->get()],
