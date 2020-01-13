@@ -62,24 +62,13 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'role' => \Spatie\Permission\Middlewares\RoleMiddleware::class,
-<<<<<<< HEAD
-	    'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
-    ];
-
-=======
         'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
         'role_or_permission' => \Spatie\Permission\Middlewares\RoleOrPermissionMiddleware::class,
         'jwt.verify' => \App\Http\Middleware\JwtMiddleware::class,
         'jwt.auth' => Tymon\JWTAuth\Middleware\GetUserFromToken::class,
-
-
-
-    
-    
     ];
 
 
->>>>>>> 478984a18f64a3445e593c70eb4aabdde72586aa
     /**
      * The priority-sorted list of middleware.
      *

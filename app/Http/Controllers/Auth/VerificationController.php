@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\VerifiesEmails;
 
 class VerificationController extends Controller
 {
+    use VerifiesEmails;
     /*
     |--------------------------------------------------------------------------
     | Email Verification Controller
@@ -19,18 +20,13 @@ class VerificationController extends Controller
     |
     */
 
-    use VerifiesEmails;
-
     /**
      * Where to redirect users after verification.
      *
      * @var string
      */
-<<<<<<< HEAD
+
     protected $redirectTo = RouteServiceProvider::HOME;
-=======
-    protected $redirectTo ='/home';
->>>>>>> 478984a18f64a3445e593c70eb4aabdde72586aa
 
     /**
      * Create a new controller instance.

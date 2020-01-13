@@ -161,11 +161,9 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-<<<<<<< HEAD
         Spatie\Permission\PermissionServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
-=======
->>>>>>> 478984a18f64a3445e593c70eb4aabdde72586aa
+
 
         /*
          * Package Service Providers...
@@ -179,14 +177,9 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-<<<<<<< HEAD
-=======
         Spatie\Permission\PermissionServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
-
->>>>>>> 478984a18f64a3445e593c70eb4aabdde72586aa
-
     ],
 
     /*
@@ -238,14 +231,9 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Form' => Collective\Html\FormFacade::class,
-<<<<<<< HEAD
-        'Html' => Collective\Html\HtmlFacade::class,
-=======
          'Html' => Collective\Html\HtmlFacade::class,
          'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class, 
          'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
->>>>>>> 478984a18f64a3445e593c70eb4aabdde72586aa
-
     ],
 
 ];
