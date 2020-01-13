@@ -31,6 +31,7 @@ class HomeController extends Controller
     }
     public function verify($token)
     {
+        dd('almalk');
        $user = User::where('verify_token',$token)->first();
         if($user){
             if($user->verify == 0){

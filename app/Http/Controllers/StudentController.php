@@ -3,58 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Course;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use JWTAuth;
-use Tymon\JWTAuth\Exceptions\JWTException;
-use App\Mail\MailtrapSending;
-use Mail;
 use DB;
 use App\Http\Requests\StudentApiValidation;
 use App\Notifications\GreetStudent;
-use Illuminate\Support\Str;
-use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
+use Carbon;
 
 class StudentController extends Controller
 {
-    
 
-    public function register(Request $request)
-    {
-            $validator = Validator::make($request->all(), [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
-            'Nid'=>'required|unique:users'
-        ]);
-
-        if($validator->fails()){
-                return response()->json($validator->errors()->toJson(), 400);
-        }
-        
-        $user = User::create([
-            'Nid' => $request->get('Nid'),
-
-            'name' => $request->get('name'),
-            'email' => $request->get('email'),
-            'password' => Hash::make($request->get('password')),
-            'verify_token'=>Str::random(32),
-            'roles' => 'student'
-        ]); 
-        $token = JWTAuth::fromUser($user);
-        Mail::to($user->email)->send(new MailtrapSending($user));
-        $role = Role::firstOrCreate(['name' => 'student']);
-    $permissions = DB::table('permissions')->where('name','list-courses')->get();
-
-    $role->syncPermissions($permissions);
-    $user->assignRole([$role->id]);
-
-        return response()->json(compact('user','token'),201);
-    }
-
-    
         public function verify($token){
             $user = User::where('verify_token',$token)->first();
             if($user){
@@ -73,37 +33,24 @@ class StudentController extends Controller
         }
 
        public function edit(StudentApiValidation $request,$id){
-      dd('aa');
         $user = User::findOrFail($id);
         $user->email = $request->email;
         $user->name = $request->name;
         $user->save();
+        return response()->json(compact('user'));
+
        }
-    
 
-
-    public function __construct()
-    {
-    }
-
-  
-    
-    public function login(Request $request)
-    {
-        $credentials = request(['email', 'password']);
-        $user =  User::where('email', $request->email)->get();
-
-            if($user[0]->email_verified_at == null){
-                return response()->json(['Unauthenticated' => 'verify your email first'], 400);
-            }
+       public function enroll($courseId){
+           $student = User::find(auth()->user()->id);
+           
+           
         
-        if (! $token = auth()->attempt($credentials)) {
-            return response()->json(['error' => 'Unauthorized'], 401);
+            $teacher_supporter_course = DB::table('teacher_supporter_course')->where('course_id',$courseId)->first();
+            DB::table('student_teacher_course')->insert(
+                ['student_id' => auth()->user()->id, 'teacher_id' => $teacher_supporter_course->teacher_id,'course_id' =>$courseId]
+            );
         }
-
-        return $this->respondWithToken($token,auth()->user());
-    }
-
     /**
      * Get the authenticated User.
      *
@@ -114,42 +61,60 @@ class StudentController extends Controller
         return response()->json(auth()->user());
     }
 
-    /**
-     * Log the user out (Invalidate the token).
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function logout()
+    public function comment($courseId)
     {
-        auth()->logout();
+        if(auth()->user()){
+            $course = Course::find($courseId); 
+            if($course){
+                    $course->comment(request()->body);
+                
+                return response()->json(['message'=>'Your Comment has been Listed To Be Approved']);
+ 
+            }else{
+                return response()->json(['message'=>'This Course not exist']);
 
-        return response()->json(['message' => 'Successfully logged out']);
+            }
+        }else{
+            return response()->json(['Time out'=>'Token Has Been Expired Please Relogin']);
+
+        }
+        
+        
+        
     }
 
-    /**
-     * Refresh a token.
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function refresh()
-    {
-        return $this->respondWithToken(auth()->refresh(),auth()->user());
+
+    public function listCourses(){
+        $StudentInfo = [];
+            if(auth()->user()){
+                $courses_student =  DB::table('users')
+                ->join('student_teacher_course', 'users.id', '=', 'student_teacher_course.student_id')
+               ->join('courses', 'courses.id', '=', 'student_teacher_course.course_id')
+                ->where('student_teacher_course.student_id','=',auth()->user()->id)
+            ->select('courses.name as course','courses.start_at','courses.end_at','courses.price','users.name as student','student_teacher_course.teacher_id as teacher_id','student_teacher_course.course_id as course_id')
+                ->get();
+                
+            //    dd($courses_student);
+                foreach($courses_student as $courseInfo){
+                    $teacher = User::where('id',$courseInfo->teacher_id)->get();  
+                    $course = Course::find($courseInfo->course_id);
+                    foreach($course->comments as $comment){
+                        $StudentInfo[] = ['Course Info'=>$courseInfo,'Teacher Info'=>$teacher,'course comment'=>$comment->comment];
+
+                    }
+               
+                }
+                return response()->json(['Student Infos' => $StudentInfo]);
+
+                }else{
+                    return response()->json(['Time out'=>'Token Has Been Expired Please Relogin']);
+    
+                }
+                // dd($teachersInfo);
+            }
+            // ->join('courses', 'courses.id', '=', 'student_teacher_course.course_id')
+            // ->select('courses.id' ,'courses.name','courses.start_at','courses.end_at','courses.price','student_teacher_course.student_id')
+
     }
 
-    /**
-     * Get the token array structure.
-     *
-     * @param  string $token
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
-    protected function respondWithToken($token,$user)
-    {
-        return response()->json([
-            'user'=>$user,
-            'access_token' => $token,
-            'token_type' => 'bearer',
-            'expires_in' => auth()->factory()->getTTL() * 60
-        ]);
-    }
-}
+

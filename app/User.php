@@ -7,7 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 use Tymon\JWTAuth\Contracts\JWTSubject;
-
+use Illuminate\Contracts\Auth\CanResetPassword;
 
 
 class User extends Authenticatable  implements MustVerifyEmail,JWTSubject
@@ -22,7 +22,7 @@ class User extends Authenticatable  implements MustVerifyEmail,JWTSubject
      */
     
     protected $fillable = [
-       'Nid', 'name', 'email', 'password','gender','avatar','roles','verify_token'
+       'Nid', 'name', 'email', 'password','gender','avatar','roles','verify_token','last_login'
     ];
 
     /**
@@ -33,7 +33,7 @@ class User extends Authenticatable  implements MustVerifyEmail,JWTSubject
     protected $hidden = [
         'password', 'remember_token',
     ];
-
+    
     /**
      * The attributes that should be cast to native types.
      *
@@ -50,4 +50,6 @@ class User extends Authenticatable  implements MustVerifyEmail,JWTSubject
     {
         return [];
     }
+
+   
 }

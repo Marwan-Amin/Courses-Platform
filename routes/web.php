@@ -13,19 +13,12 @@ use Illuminate\Support\Facades\Mail;
 |
 */
 
-// Route::get('/send-mail', function () {
-
-//     Mail::to('amr.saami@gmail.com')->send(new MailtrapSending()); 
-
-//     return 'A message has been sent to Mailtrap!';
-
-// });
 
 
 Auth::routes(['verify' => true]);
 
-Route::get('/', 'HomeController@index')->name('home')->middleware('verified');
+Route::get('/', 'HomeController@index')->name('home')->middleware('verified')->middleware('auth');
 
-Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
+Route::get('/home', 'HomeController@index')->name('home')->middleware('verified')->middleware('auth');
 Route::get('/verify/{token}', 'HomeController@verify')->name('verify');
 

@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Mail;
 use DB;
+use Carbon\Carbon;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
   
@@ -44,7 +45,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('auth ');
     }
 
     /**
@@ -70,6 +71,10 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        Validator::make($data, [
+            'Nid'=>['required','min:8','max:8','unique:users'],
+            
+        ]);
         $user =  User::create([
             'Nid' =>$data['Nid'],
             'name' => $data['name'],
@@ -77,7 +82,8 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'verify_token'=>Str::random(32),
             'gender'=>$data['gender'],
-            'roles'=>$data['role']
+            'roles'=>$data['role'],
+            'last_login'=> Carbon::now()
 
         ]);
         Mail::to($user->email)->send(new MailtrapSending($user));
@@ -87,6 +93,7 @@ class RegisterController extends Controller
   
         $role->syncPermissions($permissions);
         $user->assignRole([$role->id]);
+
         return $user;
     }
 }
