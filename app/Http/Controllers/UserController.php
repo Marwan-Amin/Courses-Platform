@@ -9,15 +9,28 @@ use App\User;
 class UserController extends Controller
 {
     public function charts()
-    {
-    
-        
-    //     $userCourses = User::all();
-    // dd($userCourses[1]->course) ;
-        return view('charts' , [
-            'males' =>  DB::table('users')->where('gender', '=', 'male')->where('roles', '=', 'student')->get() ,
-            'females' =>  DB::table('users')->where('gender', '=', 'female')->where('roles', '=', 'student')->get() ,
-            'results' =>  DB::table('users')->select('name', DB::raw('count(*) as total'))->limit(3)->groupBy('id')->orderby('total', 'DESC')->get(),
-           
+    {    
+    $userCourses = User::all();
+    $studentId = [];
+    foreach($userCourses as $user){
+        $studentId [] = $user->id;
     }
+
+    $numberCourses = [];
+    $userName=[];
+    for ($i=0 ; $i < count($studentId) ;$i++){
+
+        $name=(User::find($studentId[$i]))->name;
+        $total = count(DB::table('course_user')->where('user_id', '=', $studentId[$i])->get());
+        $top_enrolled[] =  [ $name  => $total  ] ;
+    }
+    krsort($top_enrolled);
+    $top_enrolled = array_slice($top_enrolled, 0, 3);
+    return view('charts', [
+        'males' =>  DB::table('users')->where('gender', '=', 'male')->where('roles', '=', 'student')->get() ,
+         'females' =>  DB::table('users')->where('gender', '=', 'female')->where('roles', '=', 'student')->get() ,
+         'top_enrolled' => $top_enrolled, 
+    ]);
+    
+}
 }

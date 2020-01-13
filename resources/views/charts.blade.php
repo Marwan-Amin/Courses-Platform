@@ -1028,13 +1028,14 @@
     var donutData        = {
       labels: [
 
-        <?php foreach( $results as $value ) { echo  "'std_". $value->student_id .  "" . "::". $value->total . "',"   ;  } ?> 
+        <?php foreach($top_enrolled as $index =>$value){echo "'".array_keys($value)[0] . "'" . ","   ;}?> 
+
 
       ],
       datasets: [
         {
           
-          data: [ <?php foreach( $results as $value ) { echo  $value->total . "," ;  } ?>  ],
+          data: [ <?php foreach($top_enrolled as $index =>$value){echo array_shift( $top_enrolled[$index] ) . "," ;}?>  ],
           backgroundColor : ['#f56954', '#00a65a' , '#f16934','#f11134' ],
         }
       ]
