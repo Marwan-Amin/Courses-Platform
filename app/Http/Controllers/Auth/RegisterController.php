@@ -6,11 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
 use Illuminate\Support\Str;
-use App\Mail\MailtrapSending;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Mail;
 use DB;
 use Carbon\Carbon;
 use Spatie\Permission\Models\Role;
@@ -45,7 +43,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth ');
+        $this->middleware('guest');
     }
 
     /**
@@ -56,7 +54,7 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        
+
         return Validator::make($data, [
             'Nid'=>['required','min:8','max:8','unique:users'],
             
@@ -71,10 +69,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        Validator::make($data, [
-            'Nid'=>['required','min:8','max:8','unique:users'],
-            
-        ]);
+       
         $user =  User::create([
             'Nid' =>$data['Nid'],
             'name' => $data['name'],
@@ -86,7 +81,6 @@ class RegisterController extends Controller
             'last_login'=> Carbon::now()
 
         ]);
-        Mail::to($user->email)->send(new MailtrapSending($user));
         $role = Role::firstOrCreate(['name' => $data['role']]);
             $permossion_ids=$data['role'] == 'teacher'?[5,13]:[18,18];
         $permissions = DB::table('permissions')->whereBetween('id',$permossion_ids)->get();

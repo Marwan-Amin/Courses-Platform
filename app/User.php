@@ -10,7 +10,7 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Contracts\Auth\CanResetPassword;
 
 
-class User extends Authenticatable  implements MustVerifyEmail,JWTSubject
+class User extends Authenticatable  implements MustVerifyEmail,JWTSubject,CanResetPassword
 {
 
     use Notifiable,HasRoles;

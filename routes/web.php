@@ -15,10 +15,9 @@ use Illuminate\Support\Facades\Mail;
 
 
 
-Auth::routes(['verify' => true]);
+Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home')->middleware('verified')->middleware('auth');
+Route::get('/', 'HomeController@index')->name('home');
 
-Route::get('/home', 'HomeController@index')->name('home')->middleware('verified')->middleware('auth');
-Route::get('/verify/{token}', 'HomeController@verify')->name('verify');
+Route::get('/home', 'HomeController@index')->name('home');
 
