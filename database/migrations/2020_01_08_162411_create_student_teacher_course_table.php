@@ -19,12 +19,11 @@ class CreateStudentTeacherCourseTable extends Migration
             $table->unsignedBigInteger('student_id');
             $table->foreign('student_id')->references('id')->on('users');
 
+            $table->unsignedBigInteger('course_id');
+            $table->foreign('course_id')->references('id')->on('courses');
+            
             $table->unsignedBigInteger('teacher_id');
             $table->foreign('teacher_id')->references('id')->on('users');
-
-            $table->unsignedBigInteger('course_id ');
-            $table->foreign('course_id')->references('id')->on('users');
-
 
             $table->timestamps();
         });
