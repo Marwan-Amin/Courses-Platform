@@ -22,29 +22,30 @@ class AdminController extends Controller
         else if ($value=='teacher')
         {
 
-            return view('admin.index', [
-                'users' => DB::table('users')->where('roles', '=', 'teacher')->get(),'value'=>$value
-            ])->with('i', ($request->input('page', 1) - 1) * 5);
+            $users = DB::table('users')->where('roles', '=', 'teacher')->paginate(5);
+
+            return view('admin.index',compact('users','value'))
+            ->with('i', ($request->input('page', 1) - 1) * 5);
         }
         else if ($value=='supporter')
         {
 
             return view('admin.index', [
-                'users' => DB::table('users')->where('roles', '=', 'supporter')->get(),'value'=>$value
+                'users' => DB::table('users')->where('roles', '=', 'supporter')->paginate(5),'value'=>$value
             ])->with('i', ($request->input('page', 1) - 1) * 5);
         }
         else if ($value=='student')
         {
 
             return view('admin.index', [
-                'users' => DB::table('users')->where('roles', '=', 'student')->get(),'value'=>$value
+                'users' => DB::table('users')->where('roles', '=', 'student')->paginate(5),'value'=>$value
             ])->with('i', ($request->input('page', 1) - 1) * 5);
         }
         else if ($value=='admin')
         {
 
             return view('admin.index', [
-                'users' => DB::table('users')->where('roles', '=', 'admin')->get(),'value'=>$value
+                'users' => DB::table('users')->where('roles', '=', 'admin')->paginate(5),'value'=>$value
             ])->with('i', ($request->input('page', 1) - 1) * 5);
         }
 
