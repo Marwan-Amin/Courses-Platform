@@ -23,7 +23,7 @@
             <div class="card-body" style="display: block;">
               <div class="form-group">
                 <label for="inputName">Course Name</label>
-                <input type="text" id="Course name" class="form-control" name="course_name"  value="{{$aabb->name}}">
+                <input type="text" id="Course name" class="form-control" name="name"  value="{{$aabb->name}}">
               </div>
               <div class="form-group">
                 <label for="inputName">Choose course image</label><br>
@@ -40,6 +40,13 @@
               <div class="form-group">
                 <label for="inputProjectLeader">Course ends at</label>
                 <input type="datetime-local" id="end_at" class="form-control"  name="end_at" value="{{$aabb->end_at}}">
+              </div>
+              <div class="form-group">
+                <label for="inputProjectLeader">Assign course to:</label>
+                <select name="teacher" class="form-control" id="teacher">
+                <option value="{{$aabb->teacher_id}}">{{$aabb->teacher_id}}</option>
+                
+              </select>
               </div>
 
               

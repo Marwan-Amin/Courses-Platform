@@ -30,7 +30,7 @@
                  <tr>
                     <th scope="row">{{$courseInfo->id}}</th>
                       <td>{{$courseInfo->course_name}}</td>
-                      <td>{{$courseInfo->price}} $</td>
+                      <td>{{$courseInfo->price *0.01}} $</td>
                       <td>{{$courseInfo->start_at}}</td>
                       <td>{{$courseInfo->end_at}}</td>                      
                       <td>{{$courseInfo->teacher_name}}</td>

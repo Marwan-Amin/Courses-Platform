@@ -50,17 +50,14 @@ class CourseController extends Controller
 
         $course->teacher_id = request()->teacher;
         $teacher = DB::table('users')->where('id', '=', request()->teacher)->first();  
-        // dd($teacher->name);   
-        // dd(request()->teacher);
+      
         $course->save();
         $coursesinfo = DB::table('courses')
         ->join('users','users.id','=','courses.teacher_id') 
-            
+
         ->select('users.name as teacher_name','courses.name as course_name','courses.price','courses.start_at','courses.end_at','courses.id')->get();
         
         return redirect()->route('courses.index');
-
-        // return view('Courses.index',['teacher_name' => $teachers ,'Courses'=>$courses]);
     }
 
     function show($course)
@@ -73,7 +70,7 @@ class CourseController extends Controller
     function edit($course)
     {
         $aabb = Course::find($course);
-        
+        // dd($aabb);
         $array2 = array ("aabb"=> $aabb);
         return view("Courses.edit", $array2);
     }
@@ -82,7 +79,6 @@ class CourseController extends Controller
     {
         $data = Course::find($id);
         $data->name = request()->name;
-        
         $image='';
         $image = request()->cover_images;
         
@@ -95,9 +91,15 @@ class CourseController extends Controller
         $data->price= request()->price*100;
         $data->start_at= request()->start_at;
         $data->end_at= request()->end_at;
-        $data->save();
+        // $data->save();
 
+        $coursesinfo = DB::table('courses')
+        ->join('users','users.id','=','courses.teacher_id') 
+
+        ->select('users.name as teacher_name','courses.name as course_name','courses.price','courses.start_at','courses.end_at','courses.id')->get();
+        dd($coursesinfo);
         return redirect()->route('courses.index');
+
     }
 
     function destroy($course)

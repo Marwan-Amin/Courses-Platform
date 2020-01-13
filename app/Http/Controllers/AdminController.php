@@ -170,8 +170,16 @@ class AdminController extends Controller
         $value = 'all';
         User::find($id)->delete();
         return redirect()->route('admin.index',["value"=>"all"]);
-        /*return view('admin.index')
-                        ->with('success','User deleted successfully');*/
     }
     
+
+    public function supp()
+    {
+       // $supporters = DB::table('users')->where('roles', '=', 'supporter')->get();
+        //$courses = DB::table('courses')->get();
+        dd(DB::table('users')->where('roles', '=', 'supporter')->get()); 
+        return view('admin.supp',
+           ['supporters'=> DB::table('users')->where('roles', '=', 'supporter')->get()],
+           ['courses'=>DB::table('courses')->get() ]);
+    }
 }

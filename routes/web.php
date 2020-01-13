@@ -47,6 +47,9 @@ Route::patch('/admin/{id}', 'AdminController@update')->name('admin.update');
 
 Route::get('/admin/{id}/edit', 'AdminController@edit')->name('admin.edit');
 
+Route::get('/admin/supp/supp','AdminController@supp')->name('admin.supp');
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
