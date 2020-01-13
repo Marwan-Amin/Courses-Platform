@@ -12,24 +12,12 @@ class UserController extends Controller
     {
     
         
+    //     $userCourses = User::all();
+    // dd($userCourses[1]->course) ;
         return view('charts' , [
             'males' =>  DB::table('users')->where('gender', '=', 'male')->where('roles', '=', 'student')->get() ,
             'females' =>  DB::table('users')->where('gender', '=', 'female')->where('roles', '=', 'student')->get() ,
-            'results' =>  DB::table('student_teacher_course')->select('student_id', DB::raw('count(*) as total'))->limit(3)->groupBy('student_id')->orderby('total', 'DESC')->get(),
-            'join' => DB::table('users')
-            ->join('student_teacher_course', 'users.id', '=', 'student_teacher_course.student_id')
-            ->select('users.name')
-            ->get()
-            ]);
-    }
-
-    public function fetch()
-    {
-    $username = \Auth::user()->username;
-
-    $males =  DB::table('users')->where('gender', '=', 'male')->where('roles', '=', 'student')->get();
-
-    // Return as json
-    return Response::json($males);
+            'results' =>  DB::table('users')->select('name', DB::raw('count(*) as total'))->limit(3)->groupBy('id')->orderby('total', 'DESC')->get(),
+           
     }
 }
