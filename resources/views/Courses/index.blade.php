@@ -26,28 +26,28 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($Courses as $index => $value)  
+                @foreach($Courses as $index => $courseInfo)  
                  <tr>
-                    <th scope="row">{{$value['id']}}</th>
-                      <td>{{$value['name']}}</td>
-                      <td>{{$value['price']*0.01}} $</td>
-                      <td>{{$value['start_at']}}</td>
-                      <td>{{$value['end_at']}}</td>
-                      <td></td>
+                    <th scope="row">{{$courseInfo->id}}</th>
+                      <td>{{$courseInfo->course_name}}</td>
+                      <td>{{$courseInfo->price}} $</td>
+                      <td>{{$courseInfo->start_at}}</td>
+                      <td>{{$courseInfo->end_at}}</td>                      
+                      <td>{{$courseInfo->teacher_name}}</td>
                       <td class="project-actions text-center">
-                          <a class="btn btn-success btn-sm" href="{{route('courses.show',['course' => $value['id']])}}">
+                          <a class="btn btn-success btn-sm" href="{{route('courses.show',['course' => $courseInfo->id])}}">
                             <i class="fas fa-folder"></i>
                             View
                           </a>
                       </td>
                       <td class="project-actions text-center">
-                          <a  class="btn btn-primary btn-sm" href="{{route('courses.edit',['course' => $value['id']])}}">
+                          <a  class="btn btn-primary btn-sm" href="{{route('courses.edit',['course' => $courseInfo->id])}}">
                             <i class="fas fa-pencil-alt""></i>  
                             Edit
                           </a>
                       </td>
                       <td class="project-actions text-center">
-                          <form action="/courses/{{$value['id']}}" method="POST">
+                          <form action="/courses/{{$courseInfo->id}}" method="POST">
                               @csrf 
                               @method('DELETE') 
                               <button class="btn btn-danger btn-sm" type=submit onclick="return confirm('Dou you want to delete this courses?')" >

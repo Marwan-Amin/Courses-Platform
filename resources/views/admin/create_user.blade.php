@@ -34,16 +34,20 @@
                   <input type="password" class="form-control" name="password" id="exampleInputPassword" placeholder="Password">
                 </div>
                 <div class="form-group">
+                    <label for="exampleInputEmail1">Gender</label><br>
+                    <input type="radio" name="gender" value="male"> Male<br>
+                    <input type="radio" name="gender" value="female"> Female<br>                  
+                  </div>
+                <div class="form-group">
                   <label for="exampleInputEmail1">User Role</label><br>
                   <input type="radio" name="role" value="teacher">Teacher<br>
                   <input type="radio" name="role" value="supporter">Supporter<br>                
                 </div>
                 <div class="form-group">
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Gender</label><br>
-                    <input type="radio" name="gender" value="male"> Male<br>
-                    <input type="radio" name="gender" value="female"> Female<br>                  
-                  </div>
+                  <label for="exampleInputEmail1">Birth Date</label><br>
+                  <input type="date" name="birth" value="teacher">
+                </div>
+                  
                   <div class="form-group">
                   <label for="exampleInputFile">File input</label>
                   <div class="input-group">
@@ -53,6 +57,7 @@
                     </div>
                   </div>
                 </div>
+                
               </div>
               <!-- /.card-body -->
               <div class="card-footer">

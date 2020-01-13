@@ -67,6 +67,7 @@ class AdminController extends Controller
             'password' => $request->password,
             'gender'=>$request->gender,
             'roles'=>$request->role,
+            'birth_date'=>$request->birth,
             'avatar' => $image,
             ]);
             $role = Role::firstOrCreate(['name' => $request->role]);

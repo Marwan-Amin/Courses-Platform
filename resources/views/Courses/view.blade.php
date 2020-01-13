@@ -14,6 +14,8 @@
     <h1 >Price: {{$aaaa->price *0.01}} $</h1>
     <h1 >Course will start at: {{$aaaa->start_at}} </h1>
     <h1 >Course will end at: {{$aaaa->end_at}} </h1>
+    <h1 >Assigned teacher:  </h1>
+
   </div>
 </div>
 

@@ -10,8 +10,4 @@ class Supporter extends User
         'Nid','name', 'email', 'password', 'gender','roles','avatar',
     ];
 
-    public function courses()
-    {
-        return $this->hasMany(Course::class);
-    }
 }

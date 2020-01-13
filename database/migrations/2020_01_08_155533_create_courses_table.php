@@ -20,6 +20,8 @@ class CreateCoursesTable extends Migration
             $table->bigInteger('price');
             $table->dateTime('start_at', 0);
             $table->dateTime('end_at', 0);
+            $table->unsignedBigInteger('teacher_id')->nullable();
+            $table->foreign('teacher_id')->references('id')->on('users')->onUpdate('cascade')->onDelete(DB::raw('set null'));
             $table->timestamps();
         });
     }

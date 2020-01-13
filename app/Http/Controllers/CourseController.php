@@ -6,24 +6,33 @@ use Illuminate\Http\Request;
 use App\Course;
 use App\Http\Requests\CourseValidation;
 use Illuminate\Support\Facades\Storage;
-
+use DB;
 
 class CourseController extends Controller
 {
     function index() 
     {
+        $coursesinfo = DB::table('courses')
+        ->join('users','users.id','=','courses.teacher_id') 
+        
+        ->select('users.name as teacher_name','courses.name as course_name','courses.price','courses.start_at','courses.end_at','courses.id')->get();
+        
+       
         return view('Courses.index',[
-            'Courses' => Course::all() 
+            'Courses' => $coursesinfo
         ]);
     }
 
     function create() 
     {
-        return view('Courses.create');
+       // $teachers = DB::table('users')->where('roles', '=', 'teacher')->get();
+       // dd($teachers);
+        return view('Courses.create',['teachers'=> DB::table('users')->where('roles', '=', 'teacher')->get()]);
     }
 
     function store(CourseValidation $request)
     {
+        
         $course = new Course;
         $course->name = $request->name;
         $course->price = $request->price*100;
@@ -38,8 +47,20 @@ class CourseController extends Controller
         
         $course->start_at = request()->start_at;
         $course->end_at = request()->end_at;
+
+        $course->teacher_id = request()->teacher;
+        $teacher = DB::table('users')->where('id', '=', request()->teacher)->first();  
+        // dd($teacher->name);   
+        // dd(request()->teacher);
         $course->save();
+        $coursesinfo = DB::table('courses')
+        ->join('users','users.id','=','courses.teacher_id') 
+            
+        ->select('users.name as teacher_name','courses.name as course_name','courses.price','courses.start_at','courses.end_at','courses.id')->get();
+        
         return redirect()->route('courses.index');
+
+        // return view('Courses.index',['teacher_name' => $teachers ,'Courses'=>$courses]);
     }
 
     function show($course)

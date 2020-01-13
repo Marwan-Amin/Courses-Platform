@@ -50,9 +50,12 @@
               </div>
               <div class="form-group">
                 <label for="inputProjectLeader">Assign course to:</label>
-                <select class="form-control" id="teacher">
-                  <option>1</option>
-                </select>
+                <select name="teacher" class="form-control" id="teacher">
+                @foreach ($teachers as $teacher)
+                <option value="{{$teacher->id}}">{{$teacher->name}}</option>
+                @endforeach
+                
+              </select>
               </div>
 
           </div>

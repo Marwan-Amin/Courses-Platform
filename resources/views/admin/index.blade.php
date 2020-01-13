@@ -16,6 +16,7 @@
               <tr>
                 <th>Name </th>
                 <th>Email</th>
+                <th>Birth date</th>
                 <th>Avatar</th>
                 <th>Role</th>
                 <th></th>
@@ -29,6 +30,7 @@
               <tr>
                 <td>{{$user->name}}</td>
                 <td>{{$user->email}}</td>
+                <td>{{$user->birth_date}}</td>
                 <td class="text-center"><img class="profile-user-img img-circle" width=100px height=100px src={{asset($user->avatar)}} ></td>
                 <td>{{$user->roles}} </td>
                 <td class="text-center"><a class="btn btn-success btn-sm" href="{{route('admin.show',$user->id)}}" role="button"> <i class="fas fa-folder"></i>  view</a></td>
