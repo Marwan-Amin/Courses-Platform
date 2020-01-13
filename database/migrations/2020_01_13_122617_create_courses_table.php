@@ -1,10 +1,8 @@
 <?php
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-
-class CreateEnrollableTable extends Migration
+class CreateCoursesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +11,16 @@ class CreateEnrollableTable extends Migration
      */
     public function up()
     {
-        Schema::create('enrollable', function (Blueprint $table) {
-            $table->bigIncrements('enroll_id');
-            $table->bigInteger('enrollable_id');
-            $table->string('enrollable_type');
-
-
+        Schema::create('courses', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('name');
+            $table->string('cover_image');
+            $table->bigInteger('price');
+            $table->dateTime('start_at', 0);
+            $table->dateTime('end_at', 0);
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      *
@@ -30,6 +28,6 @@ class CreateEnrollableTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('enrollable');
+        Schema::dropIfExists('courses');
     }
 }

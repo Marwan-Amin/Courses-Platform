@@ -33,11 +33,13 @@
                   <label for="exampleInputPassword1">Password</label>
                   <input type="password" class="form-control" name="password" id="exampleInputPassword" placeholder="Password">
                 </div>
+                @role('admin')
                 <div class="form-group">
                   <label for="exampleInputEmail1">User Role</label><br>
                   <input type="radio" name="role" value="teacher">Teacher<br>
                   <input type="radio" name="role" value="supporter">Supporter<br>                
                 </div>
+                @endrole
                 <div class="form-group">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Gender</label><br>

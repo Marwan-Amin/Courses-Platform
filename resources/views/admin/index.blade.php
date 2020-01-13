@@ -2,6 +2,11 @@
 @section('content')
 
  <!-- Main content -->
+ @if ($message = Session::get('success'))
+<div class="alert alert-success">
+  <p>{{ $message }}</p>
+</div>
+@endif
  <section class="content">
     <div class="row">
       <div class="col-12">

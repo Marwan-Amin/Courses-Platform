@@ -1,10 +1,8 @@
 <?php
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-
-class CreateStudentTeacherCourseTable extends Migration
+class CreateFailedJobsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +11,15 @@ class CreateStudentTeacherCourseTable extends Migration
      */
     public function up()
     {
-        Schema::create('student_teacher_course', function (Blueprint $table) {
- 
+        Schema::create('failed_jobs', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedInteger('student_id');
-            $table->string('teacher_id');
-            $table->unsignedInteger('course_id');
-            $table->timestamps();
-
+            $table->text('connection');
+            $table->text('queue');
+            $table->longText('payload');
+            $table->longText('exception');
+            $table->timestamp('failed_at')->useCurrent();
         });
     }
-
     /**
      * Reverse the migrations.
      *
@@ -31,6 +27,6 @@ class CreateStudentTeacherCourseTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('student_teacher_course');
+        Schema::dropIfExists('failed_jobs');
     }
 }

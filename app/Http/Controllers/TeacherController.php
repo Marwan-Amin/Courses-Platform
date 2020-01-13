@@ -49,18 +49,17 @@ class TeacherController extends Controller
         	'email' => $request->email,
             'password' => $request->password,
             'gender'=>$request->gender,
-            'roles'=>$request->role,
+            'roles'=>'supporter',
             'avatar' => $image,
             ]);
-            $role = Role::firstOrCreate(['name' => $request->role]);
-            $range_id = $request->role=="teacher"?[5,13]:[17,17];
+            $role = Role::firstOrCreate(['name' => 'supporter']);
             $permissions = DB::table('permissions')
-                            ->whereBetween('id',$range_id)->get();
+                            ->where('id','=',17)->get();
            // dd($permissions);
             $role->syncPermissions($permissions);
        
             $user->assignRole([$role->id]);
-        return redirect()->route('admin.index',["value"=>"all"])
+        return redirect()->route('admin.index',["value"=>"supporter"])
                         ->with('success','User created successfully');
     }
     public function create(Request $request)

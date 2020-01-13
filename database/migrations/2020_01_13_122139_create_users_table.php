@@ -1,10 +1,8 @@
 <?php
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-
-class CreateStudentsTable extends Migration
+class CreateUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +11,24 @@ class CreateStudentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('students', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('Nid');
             $table->string('name');
-            $table->string('email')->unique();
+            $table->string('email');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('avatar');
-            $table->enum('gender',['male','female']);
+            $table->enum('gender', ['male', 'female']);
             $table->date('birth_date');
+            $table->string('avatar');
+            $table->enum('roles', ['admin', 'teacher','supporter','student']);
+            $table->string('verify_token')->nullable();
+            $table->tinyInteger('verify')->default(0);
+            $table->date('last_login')->nullable();
+            $table->rememberToken();
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      *
@@ -33,6 +36,6 @@ class CreateStudentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('students');
+        Schema::dropIfExists('users');
     }
 }
