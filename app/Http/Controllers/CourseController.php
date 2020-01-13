@@ -1,6 +1,5 @@
 <?php
 
-<<<<<<< HEAD
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -71,7 +70,6 @@ class CourseController extends Controller
     function edit($course)
     {
         $aabb = Course::find($course);
-        // dd($aabb);
         $array2 = array ("aabb"=> $aabb);
         return view("Courses.edit", $array2);
     }
@@ -92,13 +90,12 @@ class CourseController extends Controller
         $data->price= request()->price*100;
         $data->start_at= request()->start_at;
         $data->end_at= request()->end_at;
-        // $data->save();
+        $data->save();
 
         $coursesinfo = DB::table('courses')
         ->join('users','users.id','=','courses.teacher_id') 
 
         ->select('users.name as teacher_name','courses.name as course_name','courses.price','courses.start_at','courses.end_at','courses.id')->get();
-        dd($coursesinfo);
         return redirect()->route('courses.index');
 
     }

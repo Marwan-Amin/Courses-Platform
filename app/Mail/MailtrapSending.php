@@ -24,19 +24,10 @@ class MailtrapSending extends Mailable
      */
     public function build()
     {
-        // return $this->from('mail@example.com', 'Mailtrap')
-        //     ->subject('Mailtrap Confirmation')
-        //     ->markdown('mails.mail')
-        //     ->with([
-        //         'name' => 'New Mailtrap User',
-        //         'link' => 'https://mailtrap.io/inboxes'
-        //     ]);
+        
         $user = $this->user;
-        if($user->roles == 'student'){
+       
             return $this->markdown('mails.api')->with('user',$user);
-
-    }
   
-    return $this->markdown('mails.mail')->with('user',$this->user);
     }
 }

@@ -94,7 +94,6 @@ class StudentController extends Controller
             ->select('courses.name as course','courses.start_at','courses.end_at','courses.price','users.name as student','student_teacher_course.teacher_id as teacher_id','student_teacher_course.course_id as course_id')
                 ->get();
                 
-            //    dd($courses_student);
                 foreach($courses_student as $courseInfo){
                     $teacher = User::where('id',$courseInfo->teacher_id)->get();  
                     $course = Course::find($courseInfo->course_id);
@@ -110,11 +109,8 @@ class StudentController extends Controller
                     return response()->json(['Time out'=>'Token Has Been Expired Please Relogin']);
     
                 }
-                // dd($teachersInfo);
             }
-            // ->join('courses', 'courses.id', '=', 'student_teacher_course.course_id')
-            // ->select('courses.id' ,'courses.name','courses.start_at','courses.end_at','courses.price','student_teacher_course.student_id')
-
+           
     }
 
 

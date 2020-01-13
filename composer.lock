@@ -4,7 +4,6 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-
     "content-hash": "6addbcaac3219d479cf159e3ccc962d9",
     "packages": [
         {
@@ -480,7 +479,6 @@
         },
         {
             "name": "laravel/framework",
-
             "version": "v6.10.1",
             "source": {
                 "type": "git",
@@ -491,7 +489,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/laravel/framework/zipball/fe45ad5bc89e5e1b08ab2c8687f9be01c9c84d14",
                 "reference": "fe45ad5bc89e5e1b08ab2c8687f9be01c9c84d14",
-
                 "shasum": ""
             },
             "require": {
@@ -625,7 +622,6 @@
                 "framework",
                 "laravel"
             ],
-
             "time": "2020-01-08T21:17:42+00:00"
         },
         {
@@ -760,7 +756,6 @@
             "time": "2019-10-02T00:37:39+00:00"
         },
         {
-
             "name": "lcobucci/jwt",
             "version": "3.3.1",
             "source": {
@@ -827,7 +822,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/2533c389fd2a7573d4f7be279b1c33cf941c8dfc",
                 "reference": "2533c389fd2a7573d4f7be279b1c33cf941c8dfc",
->>>>>>> 478984a18f64a3445e593c70eb4aabdde72586aa
                 "shasum": ""
             },
             "require": {
@@ -839,7 +833,6 @@
             },
             "require-dev": {
                 "cebe/markdown": "~1.0",
-
                 "commonmark/commonmark.js": "0.29.1",
                 "erusev/parsedown": "~1.0",
                 "ext-json": "*",
@@ -859,7 +852,6 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-
                     "dev-master": "1.3-dev"
                 }
             },
@@ -887,7 +879,6 @@
                 "markdown",
                 "parser"
             ],
-
             "time": "2020-01-09T22:41:09+00:00"
         },
         {
@@ -1121,7 +1112,6 @@
             "time": "2019-12-20T14:22:59+00:00"
         },
         {
-
             "name": "namshi/jose",
             "version": "7.2.3",
             "source": {
@@ -2766,7 +2756,6 @@
             "time": "2019-11-27T14:18:11+00:00"
         },
         {
-
             "name": "symfony/polyfill-php56",
             "version": "v1.13.1",
             "source": {
@@ -2936,7 +2925,6 @@
             "time": "2019-11-27T16:25:15+00:00"
         },
         {
-
             "name": "symfony/polyfill-util",
             "version": "v1.13.1",
             "source": {
@@ -3430,7 +3418,6 @@
             "time": "2019-10-24T08:53:34+00:00"
         },
         {
-
             "name": "tymon/jwt-auth",
             "version": "1.0.0-rc.5",
             "source": {

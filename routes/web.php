@@ -1,7 +1,7 @@
 <?php
 
-=======
 use App\Mail\MailtrapSending;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Mail;
 
 /*
@@ -20,19 +20,22 @@ Route::get('/admin', function () {
     return view('index');
 });
 // Routing courses
-Route::get('courses', 'CourseController@index')->name('courses.index');
 
-Route::post('courses', 'CourseController@store');
+Route::middleware('auth')->group(function () {
+    Route::get('courses', 'CourseController@index')->name('courses.index');
 
-Route::get('courses/create', 'CourseController@create')->name('courses.create');
+    Route::post('courses', 'CourseController@store');
 
-Route::get('/courses/{course}', 'CourseController@show')->name('courses.show');
+    Route::get('courses/create', 'CourseController@create')->name('courses.create');
 
-Route::get('/courses/{course}/edit', 'CourseController@edit')->name('courses.edit');
+    Route::get('/courses/{course}', 'CourseController@show')->name('courses.show');
 
-Route::put('/courses/{course}', 'CourseController@update')->name('courses.update');
+    Route::get('/courses/{course}/edit', 'CourseController@edit')->name('courses.edit');
 
-Route::delete('/courses/{course}', 'CourseController@destroy')->name('courses.destroy');
+    Route::put('/courses/{course}', 'CourseController@update')->name('courses.update');
+
+    Route::delete('/courses/{course}', 'CourseController@destroy')->name('courses.destroy');
+});
 
 //-------------------------------------------------------------------------------------------------
 //-------------------------------------------------------------------------------------------------
@@ -74,17 +77,14 @@ Route::get('/admin/{id}/edit', 'TeacherController@edit')->name('admin.edit');
 
 
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 
 //--------------------------------------------------------------------------------------------------------
 
 Auth::routes(['verify' => true]);
 
-Route::get('/', 'HomeController@index')->name('home')->middleware('verified')->middleware('auth');
+Route::get('/', 'HomeController@index')->name('home');
 
-Route::get('/home', 'HomeController@index')->name('home')->middleware('verified')->middleware('auth');
-Route::get('/verify/{token}', 'HomeController@verify')->name('verify');
+Route::get('/home', 'HomeController@index')->name('home');
 
 

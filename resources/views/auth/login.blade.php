@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 @extends('Layout.admin')
-=======
-@extends('layouts.layout')
->>>>>>> 478984a18f64a3445e593c70eb4aabdde72586aa
 
 @section('content')
 <div class="container">
@@ -36,23 +32,13 @@
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
                                 @error('password')
-<<<<<<< HEAD
-=======
 
->>>>>>> 478984a18f64a3445e593c70eb4aabdde72586aa
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
                         </div>
-<<<<<<< HEAD
-
-=======
-@foreach($errors as $error)
-{{$error}}
-@endforeach
->>>>>>> 478984a18f64a3445e593c70eb4aabdde72586aa
                         <div class="form-group row">
                             <div class="col-md-6 offset-md-4">
                                 <div class="form-check">

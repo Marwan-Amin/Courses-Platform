@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-@extends('Layout.app')
-=======
-@extends('layouts.layout')
->>>>>>> 478984a18f64a3445e593c70eb4aabdde72586aa
+@extends('Layout.admin')
 
 @section('content')
 <div class="container">
@@ -20,10 +16,7 @@
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-<<<<<<< HEAD
 
-=======
->>>>>>> 478984a18f64a3445e593c70eb4aabdde72586aa
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -31,8 +24,7 @@
                                 @enderror
                             </div>
                         </div>
-<<<<<<< HEAD
-=======
+
                         <div class="form-group row">
                             <label for="Nid" class="col-md-4 col-form-label text-md-right">{{ __('National ID') }}</label>
 
@@ -46,7 +38,6 @@
                                 @enderror
                             </div>
                         </div>
->>>>>>> 478984a18f64a3445e593c70eb4aabdde72586aa
 
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
@@ -61,9 +52,7 @@
                                 @enderror
                             </div>
                         </div>
-<<<<<<< HEAD
 
-=======
                         <div class="form-group row">
                             <label for="role" class="col-md-4 col-form-label text-md-right">Teacher</label>
 
@@ -90,33 +79,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label for="gender" class="col-md-4 col-form-label text-md-right">Male</label>
-
-                            <div class="col-md-6">
-                                <input  type="radio" class="form-control" name="gender" value="male"  >
-
-                                @error('gender')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="gender" class="col-md-4 col-form-label text-md-right">Female</label>
-
-                            <div class="col-md-6">
-                                <input  type="radio" class="form-control" name="gender" value="female"  >
-
-                                @error('gender')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
->>>>>>> 478984a18f64a3445e593c70eb4aabdde72586aa
+                        
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
@@ -138,8 +101,6 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
-<<<<<<< HEAD
-=======
                             <div class="form-group">
                                  <label for="avatar">Upload Avatar</label>
                                  <input name="avatar" type="file"  >
@@ -154,7 +115,6 @@
     <input type="radio" class="form-check-input" value="female" name="gender">Female
   </label>
 </div>
->>>>>>> 478984a18f64a3445e593c70eb4aabdde72586aa
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
