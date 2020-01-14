@@ -8,7 +8,6 @@ use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\Storage;
 
-
 class AdminController extends Controller
 {
     public function index(Request $request,$value)
@@ -60,6 +59,7 @@ class AdminController extends Controller
             $image = Storage::putfile('images',$request->file('avatar'));
             $request->avatar->move(public_path('images'),$image);
         }
+
         $user = User::create([
             'Nid'=>$request->Nid,
         	'name' => $request->name, 
@@ -70,20 +70,29 @@ class AdminController extends Controller
             'birth_date'=>$request->birth,
             'avatar' => $image,
             ]);
+            
+            if($request->role == 'teacher'||$request->role == 'supporter')
+            {
             $role = Role::firstOrCreate(['name' => $request->role]);
             $range_id = $request->role=="teacher"?[5,13]:[17,17];
             $permissions = DB::table('permissions')
                             ->whereBetween('id',$range_id)->get();
-           // dd($permissions);
             $role->syncPermissions($permissions);
-       
             $user->assignRole([$role->id]);
+        }
+         else if($request->role == 'student'){
+            $role = Role::firstOrCreate(['name' => $request->role]);
+            $permissions = DB::table('permissions')->whereIn('id', [1, 5, 18])->get();           
+            $role->syncPermissions($permissions);
+            $user->assignRole([$role->id]);
+            }
+            
         return redirect()->route('admin.index',["value"=>"all"])
                         ->with('success','User created successfully');
     }
     public function create_user(Request $request)
-    {
-           return view('admin.create_user');
+    { 
+        return view('admin.create_user');
     }
     
     /**

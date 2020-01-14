@@ -14,7 +14,7 @@ class PermissionTableSeeder extends Seeder
      */
     public function run()
     {
-<<<<<<< HEAD
+
         $permissions = [
             'list-teachers',
             'create-teacher',

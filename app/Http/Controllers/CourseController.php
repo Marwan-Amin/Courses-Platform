@@ -5,11 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Course;
 use App\Http\Requests\CourseValidation;
+use BeyondCode\Comments\Traits\HasComments;
 use Illuminate\Support\Facades\Storage;
 use DB;
 
 class CourseController extends Controller
 {
+    use HasComments;
+    
     function index() 
     {
         $coursesinfo = DB::table('courses')
