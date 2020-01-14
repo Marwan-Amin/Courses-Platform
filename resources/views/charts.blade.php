@@ -1036,7 +1036,8 @@
         {
           
           data: [ <?php foreach($top_enrolled as $index =>$value){echo array_shift( $top_enrolled[$index] ) . "," ;}?>  ],
-          backgroundColor : ['#f56954', '#00a65a' , '#f16934','#f11134' ],
+          backgroundColor : ['#f56954', '#00a65a' , '#f16934','#f11134' , '	#C0C0C0' , '#55efc4' , '#a29bfe' 
+        , '#ffeaa7' , '#2d3436' , '#e84393' ],
         }
       ]
     }

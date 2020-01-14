@@ -25,7 +25,7 @@ class UserController extends Controller
         $top_enrolled[] =  [ $name  => $total  ] ;
     }
     krsort($top_enrolled);
-    $top_enrolled = array_slice($top_enrolled, 0, 3);
+    $top_enrolled = array_slice($top_enrolled, 0, 10);
     return view('charts', [
         'males' =>  DB::table('users')->where('gender', '=', 'male')->where('roles', '=', 'student')->get() ,
          'females' =>  DB::table('users')->where('gender', '=', 'female')->where('roles', '=', 'student')->get() ,
