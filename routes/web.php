@@ -1,9 +1,11 @@
 <?php
-
+use App\User;
+//use DB;
 use App\Mail\MailtrapSending;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Mail;
-
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,6 +16,34 @@ use Illuminate\Support\Facades\Mail;
 | contains the "web" middleware group. Now create something great!
 |
 */
+//assign permisions according to the role of the 
+Route::get('/permisions', function (){
+    $users = User::all();
+    foreach($users as $user){
+        if(($user->roles == 'teacher')||($user->roles == 'supporter'))
+        {
+            $role = Role::firstOrCreate(['name' => $user->roles]);
+            $range_id = $user->roles=="teacher"?[5,13]:[17,17];
+            $permissions = DB::table('permissions')
+                            ->whereBetween('id',$range_id)->get();
+           
+            $role->syncPermissions($permissions);
+       
+            $user->assignRole([$role->id]);
+        }
+        else if ($user->roles == 'student')
+        {
+            $role = Role::firstOrCreate(['name' => $user->roles]);
+            $permissions = DB::table('permissions')
+            ->whereIn('id', [1, 5, 18])->get();           
+            $role->syncPermissions($permissions);
+            $user->assignRole([$role->id]);
+        }
+    }
+
+
+})->name('admin.edit');
+
 
 
 Route::get('/admin', function () {
