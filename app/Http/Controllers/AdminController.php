@@ -74,7 +74,9 @@ class AdminController extends Controller
             if($request->role == 'teacher'||$request->role == 'supporter')
             {
             $role = Role::firstOrCreate(['name' => $request->role]);
+            dd($role);
             $range_id = $request->role=="teacher"?[5,13]:[17,17];
+            
             $permissions = DB::table('permissions')
                             ->whereBetween('id',$range_id)->get();
             $role->syncPermissions($permissions);
@@ -86,7 +88,7 @@ class AdminController extends Controller
             $role->syncPermissions($permissions);
             $user->assignRole([$role->id]);
             }
-            
+
         return redirect()->route('admin.index',["value"=>"all"])
                         ->with('success','User created successfully');
     }
